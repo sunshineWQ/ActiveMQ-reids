@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.bbd10.activemqredis.Dao.GoodsDao">
+    <select id="queryAllGoods"  resultType="com.bbd10.activemqredis.entity.Goods">
+        SELECT * FROM `goods`;
+    </select>
+    <insert id="addOrder">
+    INSERT  into orders  (uid,gid,createTime)  VALUES (#{uid},#{gid},NOW())
+    </insert>
+    <update id="updateStock">
+        UPDATE   goods  SET  stock=stock-1  WHERE   gid=#{gid};
+    </update>
+    <select id="getgoofInfo"  resultType="com.bbd10.activemqredis.entity.Goods">
+        SELECT * FROM `goods`  WHERE  gid  =#{gid};
+    </select>
+
+</mapper>
